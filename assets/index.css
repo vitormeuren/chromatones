@@ -1,0 +1,113 @@
+/* Chromatones CSS styles*/
+
+@import url('https://fonts.googleapis.com/css?family=Anonymous+Pro');
+
+body {
+  font-family: 'Anonymous Pro', sans-serif;
+  color: #707070;
+}
+
+main {
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+main section {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+section div {
+  width: calc(100%/3);
+}
+
+img {
+  width: 100%;
+  filter: grayscale(1);
+  opacity: .3;
+}
+
+img:hover {
+  filter: none;
+  opacity: 1;
+}
+
+footer {
+  margin: 40px 100px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  border: 1px solid #707070;
+  padding: 20px 10px;
+}
+
+
+
+
+/* .column {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+} */
+  
+  /*  tres colunas iguais */
+/* .column { */
+  /* flex: 33%; */
+  /* max-width: 33%;
+  padding: 0 10px;
+} */
+  
+  /* .column img {
+    margin-top: 20px;
+    vertical-align: middle;
+    align: center;
+  } */
+  
+  /* layout responsivo - 2 colunas */
+@media screen and (max-width: 768px) {
+  section div {
+    width: calc(50%);
+    /* flex: 50%; */
+    /* max-width: 50%; */
+  }
+}
+  
+  /* layout responsivo - mobile */
+  /* @media screen and (max-width: 350px) {
+    .column {
+      flex: 100%;
+      max-width: 100%;
+    }
+  } */
+/* 
+.chromatones-info h3 {
+    font-family: 'Anonymous Pro', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    margin: 0px;
+    padding: 0px;
+    line-height: 1.5;
+}
+
+.chromatones-info p {
+    font-family: 'Anonymous Pro', sans-serif;
+    color: #767676;
+}
+
+
+.ghost-button {
+    border: 2px solid #767676;
+    background-color: none;
+    padding: 16px, 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    
+} */
