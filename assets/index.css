@@ -33,6 +33,11 @@ img {
 img:hover {
   filter: none;
   opacity: 1;
+  background-image: url("img/gifs/01--Fuzz_Animation.gif");
+}
+
+.img:hover .fuzz {
+  background-image: url("img/gifs/01--Fuzz_Animation.gif");
 }
 
 footer {
