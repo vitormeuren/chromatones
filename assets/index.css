@@ -2,6 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Anonymous+Pro');
 
+
 body {
   font-family: 'Anonymous Pro', sans-serif;
   color: #707070;
@@ -9,8 +10,9 @@ body {
 
 main {
   max-width: 1440px;
-  margin: 0 260px;
+  margin: 0 auto;
   margin-top: 40px;
+  padding: 0 200px;
 }
 
 main section {
@@ -22,6 +24,7 @@ main section {
 section div {
   width: calc(100%/3);
   padding: 6px 12px;
+  box-sizing: border-box;
 }
 
 img {
@@ -59,7 +62,5 @@ button {
 @media screen and (max-width: 768px) {
   section div {
     width: calc(50%);
-    /* flex: 50%; */
-    /* max-width: 50%; */
   }
 }
