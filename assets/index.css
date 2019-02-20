@@ -22,13 +22,13 @@ main section {
 }
 
 section div {
-  width: calc(100%/3);
-  padding: 6px 12px;
+  width: calc(100%/3 - 36px);
+  margin: 18px;
   box-sizing: border-box;
 }
 
-main section a {
-  display: block;
+main section div {
+  /* display: block; */
   position: relative;
 }
 
