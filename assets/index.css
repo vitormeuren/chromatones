@@ -2,6 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Anonymous+Pro');
 
+
 body {
   font-family: 'Anonymous Pro', sans-serif;
   color: #707070;
@@ -9,8 +10,9 @@ body {
 
 main {
   max-width: 1440px;
-  margin: 0 260px;
+  margin: 0 auto;
   margin-top: 40px;
+  padding: 0 200px;
 }
 
 main section {
@@ -20,24 +22,33 @@ main section {
 }
 
 section div {
-  width: calc(100%/3);
-  padding: 6px 12px;
+  width: calc(100%/3 - 36px);
+  margin: 18px;
+  box-sizing: border-box;
+}
+
+main section div {
+  /* display: block; */
+  position: relative;
+}
+
+img[src$=".gif"] {
+  position: absolute;
+  left: 0;
+  top: 0; 
+  opacity: 0;
+}
+
+img[src$=".gif"]:hover {
+  opacity: 1;
+}
+
+img[src$=".gif"]:hover ~ img[src$=".png"] {
+  visibility: hidden;
 }
 
 img {
   width: 100%;
-  filter: grayscale(1);
-  opacity: .5;
-}
-
-img:hover {
-  filter: none;
-  opacity: 1;
-  background-image: url("img/gifs/01--Fuzz_Animation.gif");
-}
-
-.img:hover .fuzz {
-  background-image: url("img/gifs/01--Fuzz_Animation.gif");
 }
 
 footer {
@@ -59,7 +70,5 @@ button {
 @media screen and (max-width: 768px) {
   section div {
     width: calc(50%);
-    /* flex: 50%; */
-    /* max-width: 50%; */
   }
 }
