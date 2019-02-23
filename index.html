@@ -11,6 +11,8 @@
 
 <body>
 
+    <iframe src="audio/silence.mp3" allow="autoplay" style="display:none"></iframe>
+
     <main>
 
         <section id="pedals">
@@ -18,9 +20,7 @@
             <div>
                 <img src= "img/gifs/01--Fuzz_Animation.gif" alt="Fuzz_Stompbox_Hover">
                 <img src= "img/Grey_/01- Fuzz_Estatico_PB.png" alt= "Fuzz_Stompbox">
-                <audio id="fuzz">
-                    <source src="audio/Fuzz_Pedal_Test.mp3" type="audio/mp3"/>
-                </audio>
+                <audio id="fuzz" src="audio/Fuzz_Pedal_Test.mp3"></audio>
             </div>
 
             <div>
@@ -50,17 +50,22 @@
     <footer>
 
         <div>
-            <a href="#">
-                <img src= "img/icons/sound_enabled.svg" alt= "Sound_Enabled_Icon">
-            </a>
+            <button>clean guitar</button>
         </div>
 
-        <h3>designed by <a href="http://vitormeuren.com">vitormeuren</a></h3>
+        <div>
+            <h3>designed by <a href="http://vitormeuren.com">vitormeuren</a></h3>
+        </div>
+        
+        <div>
+            <button class="sound-enabled">
+                <img src= "img/icons/sound_enabled.svg" alt="Sound_Enabled_Icon">
+            </button>
 
-        <button type="ghost-button"> try chaos </button>
-
+            <button type="ghost-button">try chaos</button>
+        </div>
+        
     </footer>
-
 
     <script src="assets/index.js" type="text/javascript"></script>
     

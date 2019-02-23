@@ -1,18 +1,44 @@
-/* Chromatones CSS styles*/
+/* FONT */
 
 @import url('https://fonts.googleapis.com/css?family=Anonymous+Pro');
 
+/* RESET */
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  font-size: 1em;
+  color: black;
+  font-weight: normal;
+  text-decoration: none;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -o-text-size-adjust: 100%;
+  box-sizing: border-box;
+}
+
+/* GENERAL */
 
 body {
   font-family: 'Anonymous Pro', sans-serif;
-  color: #707070;
 }
+
+a {
+  border-bottom: 1px solid #000;
+}
+
+img {
+  width: 100%;
+}
+
+/* MAIN */
 
 main {
   max-width: 1440px;
   margin: 0 auto;
   margin-top: 40px;
-  padding: 0 200px;
 }
 
 main section {
@@ -21,54 +47,71 @@ main section {
   flex-wrap: wrap;
 }
 
-section div {
-  width: calc(100%/3 - 36px);
-  margin: 18px;
-  box-sizing: border-box;
+main > section > div, 
+button {
+  cursor: pointer;
 }
 
 main section div {
-  /* display: block; */
+  width: calc(100%/3 - 36px);
+  margin: 18px;
   position: relative;
 }
 
-img[src$=".gif"] {
+main section img[src$=".gif"] {
   position: absolute;
   left: 0;
   top: 0; 
   opacity: 0;
 }
 
-img[src$=".gif"]:hover {
+main section img[src$=".gif"]:hover {
   opacity: 1;
 }
 
-img[src$=".gif"]:hover ~ img[src$=".png"] {
+main section img[src$=".gif"]:hover ~ img[src$=".png"] {
   visibility: hidden;
 }
 
-img {
-  width: 100%;
-}
+/* FOOTER */
 
 footer {
-  margin: 40px 220px 20px;
+  margin: 40px 300px 80px;
   display: flex;
   justify-content: space-between;
 }
 
-button {
+footer > div {
+  display: flex;
+  align-items: center;
+}
+
+h3, button {
+  color: #707070;
+}
+
+footer button {
   background: none;
   font-family: inherit;
   font-size: inherit;
   border: 1px solid #707070;
-  padding: 20px 10px;
+  padding: 14px 18px;
+}
+
+footer img[src$=".svg"] {
+  width: 50px;
+}
+
+.sound-enabled {
+  border: none;
+  margin-right: 20px;
 }
 
 
-  /* layout responsivo - 2 colunas */
+/* layout responsivo - 2 colunas */
+
 @media screen and (max-width: 768px) {
-  section div {
-    width: calc(50%);
+  main section div {
+    width: calc(50% - 36px);
   }
 }
