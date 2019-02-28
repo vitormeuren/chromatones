@@ -41,10 +41,13 @@ img[src$=".gif"] {
 
 img[src$=".gif"]:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
 img[src$=".gif"]:hover ~ img[src$=".png"] {
   visibility: hidden;
+  cursor: pointer;
+
 }
 
 img {
