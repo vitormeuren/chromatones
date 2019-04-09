@@ -67,10 +67,13 @@ main section img[src$=".gif"] {
 
 main section img[src$=".gif"]:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
 main section img[src$=".gif"]:hover ~ img[src$=".png"] {
   visibility: hidden;
+  cursor: pointer;
+
 }
 
 /* FOOTER */
