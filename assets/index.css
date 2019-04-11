@@ -1,0 +1,120 @@
+/* FONT */
+
+@import url('https://fonts.googleapis.com/css?family=Anonymous+Pro');
+
+/* RESET */
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  font-size: 1em;
+  color: black;
+  font-weight: normal;
+  text-decoration: none;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -o-text-size-adjust: 100%;
+  box-sizing: border-box;
+}
+
+/* GENERAL */
+
+body {
+  font-family: 'Anonymous Pro', sans-serif;
+}
+
+a {
+  border-bottom: 1px solid #000;
+}
+
+img {
+  width: 100%;
+}
+
+/* MAIN */
+
+main {
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+main section {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+main > section > div, 
+button {
+  cursor: pointer;
+}
+
+main section div {
+  width: calc(100%/3 - 36px);
+  margin: 18px;
+  position: relative;
+}
+
+main section img[src$=".gif"] {
+  position: absolute;
+  left: 0;
+  top: 0; 
+  opacity: 0;
+}
+
+main section img[src$=".gif"]:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+main section img[src$=".gif"]:hover ~ img[src$=".png"] {
+  visibility: hidden;
+  cursor: pointer;
+
+}
+
+/* FOOTER */
+
+footer {
+  margin: 40px 300px 80px;
+  display: flex;
+  justify-content: space-between;
+}
+
+footer > div {
+  display: flex;
+  align-items: center;
+}
+
+h3, button {
+  color: #707070;
+}
+
+footer button {
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  border: 1px solid #707070;
+  padding: 14px 18px;
+}
+
+footer img[src$=".svg"] {
+  width: 50px;
+}
+
+.sound-enabled {
+  border: none;
+  margin-right: 20px;
+}
+
+
+/* layout responsivo - 2 colunas */
+
+@media screen and (max-width: 768px) {
+  main section div {
+    width: calc(50% - 36px);
+  }
+}
