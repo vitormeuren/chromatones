@@ -13,72 +13,81 @@
 
     <iframe src="binary/audio/silence.mp3" allow="autoplay" style="display:none"></iframe>
 
-    <main>
+    <div class="wrapper">
 
-        <section id="pedals">
+        <main>
+
+            <section id="pedals">
+
+                <div>
+                    <img src="binary/img/gifs/01--fuzz.gif" alt="Fuzz_Stompbox_Hover">
+                    <img src="binary/img/grey/01--fuzz.png" alt="Fuzz_Stompbox">
+                    <audio src="binary/audio/fuzz_pedal.mp3"></audio>
+                </div>
+
+                <div>
+                    <img src="binary/img/gifs/02--phaser.gif" alt="Phaser_Stompbox_Hover">
+                    <img src="binary/img/grey/02--phaser.png" alt="Phaser_Stompbox">
+                    <audio src="binary/audio/phaser_pedal.mp3"></audio>
+                </div>
+
+                <div>
+                    <img src="binary/img/gifs/03--chorus.gif" alt="Chorus_Stompbox_Hover">
+                    <img src="binary/img/grey/03--chorus.png" alt="Chorus_Stompbox">
+                    <audio src="binary/audio/chorus_pedal.mp3"></audio>
+                </div>
+
+                <div>
+                    <img src="binary/img/gifs/04--delay.gif" alt="Delay_Stompbox_Hover">
+                    <img src="binary/img/grey/04--delay.png" alt="Delay_Stompbox">
+                    <audio src="binary/audio/delay_pedal.mp3"></audio>
+                </div>
+
+                <div>
+                    <img src="binary/img/gifs/05--reverb.gif" alt="Reverb_Stompbox_Hover">
+                    <img src="binary/img/grey/05--reverb.png" alt="Reverb_Stompbox">
+                    <audio src="binary/audio/reverb_pedal.mp3"></audio>
+                </div>
+
+                <div>
+                    <img src="binary/img/gifs/06--tremolo.gif" alt="Tremolo_Stompbox_Hover">
+                    <img src="binary/img/grey/06--tremolo.png" alt="Tremolo_Stompbox">
+                    <audio src="binary/audio/tremolo_pedal.mp3"></audio>
+                </div>
+
+            </section>
+
+        </main>
+
+        <footer>
 
             <div>
-                <img src= "binary/img/gifs/01--fuzz.gif" alt="Fuzz_Stompbox_Hover">
-                <img src= "binary/img/grey/01--fuzz.png" alt= "Fuzz_Stompbox">
-                <audio src="binary/audio/fuzz_pedal.mp3"></audio>
+                <button type="ghost-button" id="clean-guitar">clean guitar</button>
+                <audio id="clean-audio" src="binary/audio/clean_guitar.mp3"></audio>
             </div>
 
             <div>
-                <img src= "binary/img/gifs/02--phaser.gif" alt="Phaser_Stompbox_Hover">
-                <img src= "binary/img/grey/02--phaser.png" alt= "Phaser_Stompbox">
-                <audio src="binary/audio/phaser_pedal.mp3"></audio>
+                <h3>designed by <a href="http://vitormeuren.com">vitormeuren</a></h3>
             </div>
-
+            
             <div>
-                <img src= "binary/img/gifs/03--chorus.gif" alt="Chorus_Stompbox_Hover">
-                <img src= "binary/img/grey/03--chorus.png" alt= "Chorus_Stompbox">
-                <audio src="binary/audio/chorus_pedal.mp3"></audio>
+                <button id="sound-enabled">
+                    <img class="enabled" src="binary/icons/sound_enabled.svg" alt="Sound_Enabled_Icon">
+                    <img class="disabled" src="binary/icons/sound_mute.svg" alt="Sound_Disabled_Icon">
+                </button>
+
+                <div>
+                    <button type="ghost-button" id="try-chaos">try chaos</button>
+                    <audio id ="chaos-audio" src="binary/audio/try_chaos.mp3"></audio>
+                </div>
             </div>
+            
+        </footer>
 
-            <div>
-                <img src= "binary/img/gifs/04--delay.gif" alt="Delay_Stompbox_Hover">
-                <img src= "binary/img/grey/04--delay.png" alt= "Delay_Stompbox">
-                <audio src="binary/audio/delay_pedal.mp3"></audio>
-            </div>
-
-            <div>
-                <img src= "binary/img/gifs/05--reverb.gif" alt="Reverb_Stompbox_Hover">
-                <img src= "binary/img/grey/05--reverb.png" alt= "Reverb_Stompbox">
-                <audio src="binary/audio/reverb_pedal.mp3"></audio>
-            </div>
-
-            <div>
-                <img src= "binary/img/gifs/06--tremolo.gif" alt="Tremolo_Stompbox_Hover">
-                <img src= "binary/img/grey/06--tremolo.png" alt= "Tremolo_Stompbox">
-                <audio src="binary/audio/tremolo_pedal.mp3"></audio>
-            </div>
-
-        </section>
-
-    </main>
-
-    <footer>
-
-        <div>
-            <button>clean guitar</button>
-        </div>
-
-        <div>
-            <h3>designed by <a href="http://vitormeuren.com">vitormeuren</a></h3>
-        </div>
-        
-        <div>
-            <button class="sound-enabled">
-                <img src= "binary/icons/sound_enabled.svg" alt="Sound_Enabled_Icon">
-            </button>
-
-            <button type="ghost-button">try chaos</button>
-        </div>
-        
-    </footer>
+    </div>
 
     <script src="assets/index.js" type="text/javascript"></script>
     
 </body>
 
-s</html>
+</html>
