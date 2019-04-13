@@ -42,7 +42,7 @@ var tryChaosButton = document.getElementById('try-chaos'),
 tryChaosButton.onclick = function() {
     this.classList.toggle('playing');
 
-    if (this.classList == 'playing') {
+    if (isPlaying(this)) {
         chaosAudio.play();
 
         displayElements(gifs);
@@ -68,3 +68,36 @@ function hideElements(elements) {
         element.style.opacity = 0;
     });
 }
+
+// Clean guitar audio
+
+var cleanGuitarButton = document.getElementById('clean-guitar'),
+    cleanAudio = document.getElementById('clean-audio');
+
+cleanGuitarButton.onclick = function() {
+    this.classList.toggle('playing');
+
+    // togglePlay(cleanAudio);
+
+    if (isPlaying(this)) {
+        cleanAudio.play();
+    }
+    else {
+        cleanAudio.pause();
+        cleanAudio.currentTime = 0;
+    }
+}
+
+function isPlaying(element) {
+    return element.classList == 'playing';
+}
+
+// function togglePlay(element) {
+//     if (isPlaying(element)) {
+//         element.play();
+//     }
+//     else {
+//         element.pause();
+//         element.currentTime = 0;
+//     }
+// }
