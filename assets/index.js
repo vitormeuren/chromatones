@@ -7,7 +7,7 @@ for (i = 0; i < pedals.length; i++) {
     pedal.onmouseenter = function() {
         audio = this.getElementsByTagName("audio")[0];
 
-        if (audio) audio.play();
+        if (audio && chaosAudio.paused) audio.play();
     }
 
     pedals[i].onmouseleave = function() {
@@ -23,12 +23,12 @@ for (i = 0; i < pedals.length; i++) {
 var soundButton = document.getElementById('sound-enabled');
 
 soundButton.onclick = function() {
+    var audios = document.getElementsByTagName('audio');
+
     this.classList.toggle('muted');
 
-    for (i = 0; i < pedals.length; i++) {
-        var audio = pedals[i].getElementsByTagName("audio")[0];
-
-        audio.volume = this.classList == 'muted' ? 0 : 1;
+    for (i = 0; i < audios.length; i++) {
+        audios[i].volume = this.classList == 'muted' ? 0 : 1;
     }
 }
 
@@ -42,30 +42,39 @@ var tryChaosButton = document.getElementById('try-chaos'),
 tryChaosButton.onclick = function() {
     this.classList.toggle('playing');
 
+    [].forEach.call(gifs, function(gif) {
+        gif.classList.toggle('visible');
+    });
+
     if (isPlaying(this)) {
         chaosAudio.play();
 
-        displayElements(gifs);
-        hideElements(pngs);
+        // displayElements(gifs);
+        // hideElements(pngs);
+
+
     }
     else {
         chaosAudio.pause();
         chaosAudio.currentTime = 0;
 
-        displayElements(pngs);
-        hideElements(gifs);
+        // displayElements(pngs);
+        // hideElements(gifs);
     }
 }
 
 function displayElements(elements) {
     [].forEach.call(elements, function(element) {
-        element.style.opacity = 1;
+
+        // element.classList.add('visible');
+        // element.classList.remove('hidden');
     });
 }
 
 function hideElements(elements) {
     [].forEach.call(elements, function(element) {
-        element.style.opacity = 0;
+        // element.classList.add('hidden');
+        // element.classList.remove('visible');
     });
 }
 

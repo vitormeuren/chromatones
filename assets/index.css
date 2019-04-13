@@ -26,6 +26,7 @@ body {
 }
 
 a {
+  padding-bottom: 3px;
   border-bottom: 1px solid #000;
 }
 
@@ -69,18 +70,24 @@ main section img[src$=".gif"] {
   position: absolute;
   left: 0;
   top: 0; 
-  opacity: 0;
+  display: none;
 }
 
 main section img[src$=".gif"]:hover {
-  opacity: 1;
+  display: block;
   cursor: pointer;
 }
 
-main section img[src$=".gif"]:hover ~ img[src$=".png"] {
-  visibility: hidden;
-  cursor: pointer;
+main section img[src$=".png"]:hover ~ img[src$=".gif"] {
+  display: block;
+}
 
+.hidden {
+  opacity: 0;
+}
+
+main section img[src$=".gif"].visible {
+  display: block;
 }
 
 /* FOOTER */
@@ -100,6 +107,15 @@ h3, button {
   color: #707070;
 }
 
+h3:hover, h3:hover a, button:hover {
+  color: #F73157;
+  border-color: #F73157;
+}
+
+a:hover {
+  border: none;
+}
+
 footer button {
   background: none;
   font-family: inherit;
@@ -108,9 +124,14 @@ footer button {
   padding: 14px 18px;
 }
 
-footer img[src$=".svg"] {
+#sound-enabled svg {
+  fill: #707070;
   width: 50px;
   vertical-align: top;
+}
+
+#sound-enabled:hover svg {
+  fill: #F73157;
 }
 
 #sound-enabled {
