@@ -9,8 +9,8 @@
   padding: 0;
   border: 0;
   list-style: none;
-  font-size: 1em;
-  color: black;
+  font-size: 20px;
+  color: #707070;
   font-weight: normal;
   text-decoration: none;
   -webkit-text-size-adjust: 100%;
@@ -23,6 +23,7 @@
 
 body {
   font-family: 'Anonymous Pro', sans-serif;
+  line-height: 1.2;
 }
 
 a {
@@ -36,7 +37,8 @@ img {
 
 .wrapper {
   margin: 0 auto;
-  max-width: 1440px;
+  max-width: 1280px;
+  padding: 0 40px;
 }
 
 button:focus {
@@ -47,67 +49,110 @@ button:focus {
 
 main {
   margin-top: 40px;
+  position: relative;
 }
 
-main section {
+#pedals {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
 
-main > section > div, 
+#pedals div, 
 button {
   cursor: pointer;
 }
 
-main section div {
-  width: calc(100%/3 - 36px);
-  margin: 18px;
+#pedals div {
+  width: calc(100%/3 - 24px);
+  margin: 12px;
   position: relative;
 }
 
-main section img[src$=".gif"] {
+#pedals img[src$=".gif"] {
   position: absolute;
-  left: 0;
   top: 0; 
   display: none;
 }
 
-main section img[src$=".gif"]:hover {
+#pedals img[src$=".gif"]:hover {
   display: block;
   cursor: pointer;
 }
 
-main section img[src$=".png"]:hover ~ img[src$=".gif"] {
+#pedals img[src$=".png"]:hover ~ img[src$=".gif"] {
   display: block;
 }
 
-.hidden {
-  opacity: 0;
-}
-
-main section img[src$=".gif"].visible {
+#pedals img[src$=".gif"].visible,
+#about.visible {
   display: block;
 }
+
+/* ABOUT */
+
+#about {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  padding: 124px;
+  margin: 0 0 80px;
+  margin-bottom: 0;
+  border: 2px solid #707070;
+  display: none;
+}
+
+#about div {
+  max-width: 740px;
+}
+
+#about p {
+  margin-bottom: 1.4em;
+}
+
+#close-button {
+  width: 30px;
+  height: 30px;
+  /* background: black; */
+  position: absolute;
+  right: 50px;
+  top: 50px;
+}
+
+#close-button svg {
+  width: 30px;
+  height: 30px;
+  stroke-width: 2;
+  stroke: #707070;
+}
+
+#close-button:hover svg {
+  stroke: #F73157;
+}
+
 
 /* FOOTER */
 
 footer {
-  margin: 40px 60px 80px;
+  margin: 40px 0;
   display: flex;
   justify-content: space-between;
 }
 
-footer > div {
+footer > section {
   display: flex;
-  align-items: center;
 }
 
-h3, button {
-  color: #707070;
+footer button {
+  margin-right: 36px;
 }
 
-h3:hover, h3:hover a, button:hover {
+footer p:hover, 
+footer p:hover a, 
+button[type="ghost-button"]:hover {
   color: #F73157;
   border-color: #F73157;
 }
@@ -116,12 +161,13 @@ a:hover {
   border: none;
 }
 
-footer button {
+footer button[type="ghost-button"] {
+  display: block;
   background: none;
   font-family: inherit;
   font-size: inherit;
-  border: 1px solid #707070;
   padding: 14px 18px;
+  border: 2px solid #707070;
 }
 
 #sound-enabled svg {
@@ -132,11 +178,6 @@ footer button {
 
 #sound-enabled:hover svg {
   fill: #F73157;
-}
-
-#sound-enabled {
-  border: none;
-  margin-right: 10px;
 }
 
 #sound-enabled .disabled,
@@ -152,7 +193,7 @@ footer button {
 /* layout responsivo - 2 colunas */
 
 @media screen and (max-width: 768px) {
-  main section div {
+  #pedals div {
     width: calc(50% - 36px);
   }
 }

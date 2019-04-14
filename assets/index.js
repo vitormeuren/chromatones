@@ -20,6 +20,10 @@ for (i = 0; i < pedals.length; i++) {
 
 // Sound-enabled button functionality
 
+function isPlaying(element) {
+    return element.classList == 'playing';
+}
+
 var soundButton = document.getElementById('sound-enabled');
 
 soundButton.onclick = function() {
@@ -48,34 +52,11 @@ tryChaosButton.onclick = function() {
 
     if (isPlaying(this)) {
         chaosAudio.play();
-
-        // displayElements(gifs);
-        // hideElements(pngs);
-
-
     }
     else {
         chaosAudio.pause();
         chaosAudio.currentTime = 0;
-
-        // displayElements(pngs);
-        // hideElements(gifs);
     }
-}
-
-function displayElements(elements) {
-    [].forEach.call(elements, function(element) {
-
-        // element.classList.add('visible');
-        // element.classList.remove('hidden');
-    });
-}
-
-function hideElements(elements) {
-    [].forEach.call(elements, function(element) {
-        // element.classList.add('hidden');
-        // element.classList.remove('visible');
-    });
 }
 
 // Clean guitar audio
@@ -86,8 +67,6 @@ var cleanGuitarButton = document.getElementById('clean-guitar'),
 cleanGuitarButton.onclick = function() {
     this.classList.toggle('playing');
 
-    // togglePlay(cleanAudio);
-
     if (isPlaying(this)) {
         cleanAudio.play();
     }
@@ -97,16 +76,17 @@ cleanGuitarButton.onclick = function() {
     }
 }
 
-function isPlaying(element) {
-    return element.classList == 'playing';
+
+// About functionality
+
+var aboutButton = document.getElementById('open-about'),
+    aboutWindow = document.getElementById('about'),
+    closeButton = document.getElementById('close-button');
+
+aboutButton.onclick = function() {
+    aboutWindow.classList.toggle('visible');
 }
 
-// function togglePlay(element) {
-//     if (isPlaying(element)) {
-//         element.play();
-//     }
-//     else {
-//         element.pause();
-//         element.currentTime = 0;
-//     }
-// }
+closeButton.onclick = function() {
+    aboutWindow.classList.remove('visible');
+}

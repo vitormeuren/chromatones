@@ -57,31 +57,61 @@
 
             </section>
 
+            <section id="about">
+                <button id="close-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path class="st0" d="M1 1l28 28M29 1L1 29"/></svg>
+                </button>
+                <div>
+                    <p>Chromatones v1.0</p>
+                    <p>an illustrated and animated effect units (pedals) web dashboard.</p>
+                    <p>instructions:</p>
+                    <p>hover over each each illustration to enable each effect unit animation and display its animation and correspondent sound.</p>
+                    <p>the button &lsquo;try chaos&rsquo; toggles all units at the same time.</p>
+                    <p>the button &lsquo;clean guitar&rsquo; plays a clean version of the guitar riff audio file processed through each unit.</p>
+                    <p>chromatones is a web experiment designed by vitor meuren and coded by vitor carvalho.</p>
+                </div>
+            </section>
+
         </main>
 
         <footer>
 
-            <div>
-                <button type="ghost-button" id="clean-guitar">clean guitar</button>
-                <audio id="clean-audio" src="binary/audio/clean_guitar.mp3"></audio>
-            </div>
+            <section>
 
-            <div>
-                <h3>designed by <a href="http://vitormeuren.com">vitormeuren</a></h3>
-            </div>
-            
-            <div>
-                <button id="sound-enabled">
-                    <svg class="enabled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.8-1-3.3-2.5-4v8c1.5-.7 2.5-2.2 2.5-4zM14 3.2v2.1c2.9.9 5 3.5 5 6.7s-2.1 5.9-5 6.7v2.1c4-.9 7-4.5 7-8.8s-3-7.9-7-8.8z"/><path d="M0 0h24v24H0V0z" fill="none"/></svg>
-                    <svg class="disabled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 12c0-1.8-1-3.3-2.5-4v2.2l2.5 2.4V12zm2.5 0c0 .9-.2 1.8-.5 2.6l1.5 1.5c.7-1.2 1-2.6 1-4.1 0-4.3-3-7.9-7-8.8v2.1c2.9.8 5 3.5 5 6.7zM4.3 3L3 4.3 7.7 9H3v6h4l5 5v-6.7l4.2 4.2c-.7.5-1.4.9-2.2 1.2v2.1c1.4-.3 2.6-1 3.7-1.8l2 2 1.3-1.3-9-9L4.3 3zM12 4L9.9 6.1 12 8.2V4z" /><path d="M0 0h24v24H0V0z" fill="none"/></svg>
-                </button>
+                <div>
+                    <button type="ghost-button" id="clean-guitar">clean guitar</button>
+                    <audio id="clean-audio" src="binary/audio/clean_guitar.mp3"></audio>
+                </div>
 
                 <div>
                     <button type="ghost-button" id="try-chaos">try chaos</button>
                     <audio id ="chaos-audio" src="binary/audio/try_chaos.mp3"></audio>
                 </div>
-            </div>
-            
+
+            </section>
+
+            <section>
+
+                <div>
+                    <button id="sound-enabled">
+                        <svg class="enabled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.8-1-3.3-2.5-4v8c1.5-.7 2.5-2.2 2.5-4zM14 3.2v2.1c2.9.9 5 3.5 5 6.7s-2.1 5.9-5 6.7v2.1c4-.9 7-4.5 7-8.8s-3-7.9-7-8.8z"/><path d="M0 0h24v24H0V0z" fill="none"/></svg>
+                        <svg class="disabled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 12c0-1.8-1-3.3-2.5-4v2.2l2.5 2.4V12zm2.5 0c0 .9-.2 1.8-.5 2.6l1.5 1.5c.7-1.2 1-2.6 1-4.1 0-4.3-3-7.9-7-8.8v2.1c2.9.8 5 3.5 5 6.7zM4.3 3L3 4.3 7.7 9H3v6h4l5 5v-6.7l4.2 4.2c-.7.5-1.4.9-2.2 1.2v2.1c1.4-.3 2.6-1 3.7-1.8l2 2 1.3-1.3-9-9L4.3 3zM12 4L9.9 6.1 12 8.2V4z" /><path d="M0 0h24v24H0V0z" fill="none"/></svg>
+                    </button>
+                </div>
+
+                <div>
+                    <button type="ghost-button" id="open-about">about</button>
+                </div>
+                    
+                <div>
+                    <p>
+                        audio and visuals by <a href="http://vitormeuren.com" target="_blank">vitor meuren</a><br>
+                        code by <a href="https://vitorcarvalho.net" target="_blank">vitor carvalho</a>
+                    </p>
+                </div>
+
+            </section>
+
         </footer>
 
     </div>
