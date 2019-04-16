@@ -1,4 +1,4 @@
-# chromatones
+# chromatones - https://vitormeuren.github.io/chromatones/
 
 Chromatones is an illustrated webpage designed and developed by @vitormeuren - The project consists in a simple stompboxes (effect pedals) dashboard where the user can hover over each unit and play enabling its color and its correspondent sound.
 
