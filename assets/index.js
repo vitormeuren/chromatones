@@ -5,7 +5,7 @@ for (i = 0; i < pedals.length; i++) {
     var pedal = pedals[i], audio;
     
     pedal.onmouseenter = function() {
-        audio = this.getElementsByTagName("audio")[0];
+        audio = this.getElementsByTagName('audio')[0];
 
         if (audio && chaosAudio.paused) audio.play();
     }
@@ -69,12 +69,13 @@ function toggleChaos() {
     });
 
     chaosPlaying = togglePlay(chaosAudio, chaosPlaying);
+    tryChaosButton.innerHTML = tryChaosButton.innerHTML == 'try chaos' ? 'stop chaos' : 'try chaos';
 }
 
 // Clean guitar audio
 
 var cleanGuitarButton = document.getElementById('clean-guitar'),
-    cleanAudio = cleanGuitarButton.getElementsByTagName('audio')[0],
+    cleanAudio = document.getElementById('clean-guitar-audio'),
     cleanAudioPlaying = false;
 
 cleanGuitarButton.onclick = function() {
@@ -85,8 +86,15 @@ cleanGuitarButton.onclick = function() {
     toggleCleanAudio();
 }
 
+cleanAudio.addEventListener('ended', function() {
+    cleanAudio.currentTime = 0;
+
+    cleanGuitarButton.innerHTML = 'clean guitar';
+})
+
 function toggleCleanAudio() {
     cleanAudioPlaying = togglePlay(cleanAudio, cleanAudioPlaying);
+    cleanGuitarButton.innerHTML = cleanGuitarButton.innerHTML == 'clean guitar' ? 'stop guitar' : 'clean guitar';
 }
 
 // About functionality
