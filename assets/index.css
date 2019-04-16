@@ -9,8 +9,7 @@
   padding: 0;
   border: 0;
   list-style: none;
-  font-size: 1em;
-  color: black;
+  color: #707070;
   font-weight: normal;
   text-decoration: none;
   -webkit-text-size-adjust: 100%;
@@ -22,10 +21,13 @@
 /* GENERAL */
 
 body {
+  font-size: 18px;
   font-family: 'Anonymous Pro', sans-serif;
+  line-height: 1.2;
 }
 
 a {
+  padding-bottom: 3px;
   border-bottom: 1px solid #000;
 }
 
@@ -35,7 +37,12 @@ img {
 
 .wrapper {
   margin: 0 auto;
-  max-width: 1440px;
+  max-width: 1280px;
+  padding: 0 40px;
+}
+
+button {
+  background: none;
 }
 
 button:focus {
@@ -46,76 +53,131 @@ button:focus {
 
 main {
   margin-top: 40px;
+  position: relative;
 }
 
-main section {
+#pedals {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
 
-main > section > div, 
+#pedals div, 
 button {
   cursor: pointer;
 }
 
-main section div {
-  width: calc(100%/3 - 36px);
-  margin: 18px;
+#pedals div {
+  width: calc(100%/3 - 24px);
+  margin: 12px;
   position: relative;
 }
 
-main section img[src$=".gif"] {
+#pedals img[src$=".gif"] {
+  position: absolute;
+  top: 0; 
+  display: none;
+}
+
+#pedals img[src$=".gif"]:hover {
+  display: block;
+  cursor: pointer;
+}
+
+#pedals img[src$=".png"]:hover ~ img[src$=".gif"] {
+  display: block;
+}
+
+#pedals img[src$=".gif"].visible,
+#about.visible {
+  display: block;
+}
+
+/* ABOUT */
+
+#about {
   position: absolute;
   left: 0;
-  top: 0; 
-  opacity: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  padding: 124px;
+  margin: 0 0 80px;
+  margin-bottom: 0;
+  border: 2px solid #707070;
+  display: none;
+  overflow: scroll;
 }
 
-main section img[src$=".gif"]:hover {
-  opacity: 1;
-  cursor: pointer;
+#about div {
+  max-width: 740px;
 }
 
-main section img[src$=".gif"]:hover ~ img[src$=".png"] {
-  visibility: hidden;
-  cursor: pointer;
-
+#about p {
+  margin-bottom: 1.4em;
 }
+
+#close-button {
+  position: absolute;
+  right: 50px;
+  top: 50px;
+}
+
+#close-button svg {
+  width: 30px;
+  height: 30px;
+  stroke-width: 2;
+  stroke: #707070;
+}
+
+#close-button:hover svg {
+  stroke: #F73157;
+}
+
 
 /* FOOTER */
 
 footer {
-  margin: 40px 60px 80px;
+  margin: 40px 0;
   display: flex;
   justify-content: space-between;
 }
 
-footer > div {
+footer > section {
   display: flex;
-  align-items: center;
-}
-
-h3, button {
-  color: #707070;
 }
 
 footer button {
-  background: none;
+  margin-right: 36px;
+}
+
+footer p:hover, 
+footer p:hover a, 
+button[type="ghost-button"]:hover {
+  color: #F73157;
+  border-color: #F73157;
+}
+
+a:hover {
+  border: none;
+}
+
+button[type="ghost-button"] {
+  display: block;
   font-family: inherit;
   font-size: inherit;
-  border: 1px solid #707070;
   padding: 14px 18px;
+  border: 2px solid #707070;
 }
 
-footer img[src$=".svg"] {
+#sound-enabled svg {
+  fill: #707070;
   width: 50px;
-  vertical-align: top;
 }
 
-#sound-enabled {
-  border: none;
-  margin-right: 10px;
+#sound-enabled:hover svg {
+  fill: #F73157;
 }
 
 #sound-enabled .disabled,
@@ -128,10 +190,77 @@ footer img[src$=".svg"] {
 }
 
 
-/* layout responsivo - 2 colunas */
+@media screen and (max-width: 767px) {
 
-@media screen and (max-width: 768px) {
-  main section div {
-    width: calc(50% - 36px);
+  /* GENERAL */
+
+  body {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .wrapper {
+    padding: 0 20px;
+  }
+  
+  main {
+    margin-top: 20px;
+  }
+
+  #pedals div {
+    width: 50%;
+    margin: 0;
+  }
+
+  p {
+    line-height: 1.8;
+  }
+
+  /* ABOUT */
+
+  #about {
+    padding: 30px;
+    border-width: 1px;
+  }
+
+  #about div {
+    padding-right: 20px;
+  }
+
+  #close-button {
+    top: 20px;
+    right: 20px;
+  }
+
+  #close-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* FOOTER */
+
+  footer {
+    display: block;
+  }
+
+  footer section {
+    margin-bottom: 10px;
+  }
+
+  #sound-enabled svg {
+    width: 40px;
+  }
+
+  footer button {
+    margin: 0;
+  }
+
+  button[type="ghost-button"] {
+    border-width: 1px;
+    margin-right: 12px;
+  }
+
+  button[type="ghost-button"] {
+    padding: 12px 8px;
   }
 }

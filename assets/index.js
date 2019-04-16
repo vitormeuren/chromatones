@@ -7,7 +7,7 @@ for (i = 0; i < pedals.length; i++) {
     pedal.onmouseenter = function() {
         audio = this.getElementsByTagName("audio")[0];
 
-        if (audio) audio.play();
+        if (audio && chaosAudio.paused) audio.play();
     }
 
     pedals[i].onmouseleave = function() {
@@ -23,81 +23,82 @@ for (i = 0; i < pedals.length; i++) {
 var soundButton = document.getElementById('sound-enabled');
 
 soundButton.onclick = function() {
+    var audios = document.getElementsByTagName('audio');
+
     this.classList.toggle('muted');
 
-    for (i = 0; i < pedals.length; i++) {
-        var audio = pedals[i].getElementsByTagName("audio")[0];
-
-        audio.volume = this.classList == 'muted' ? 0 : 1;
+    for (i = 0; i < audios.length; i++) {
+        audios[i].volume = this.classList == 'muted' ? 0 : 1;
     }
 }
 
 // Ghost buttons audio
 
-var tryChaosButton = document.getElementById('try-chaos'),
-    chaosAudio = document.getElementById('chaos-audio'),
-    gifs = document.querySelectorAll('img[src$=".gif"]'),
+var gifs = document.querySelectorAll('img[src$=".gif"]'),
     pngs = document.querySelectorAll('img[src$=".png"');
 
-tryChaosButton.onclick = function() {
-    this.classList.toggle('playing');
+// Chaos audio & animations
 
-    if (isPlaying(this)) {
-        chaosAudio.play();
+var tryChaosButton = document.getElementById('try-chaos'),
+    chaosAudio = document.getElementById('chaos-audio'),
+    chaosPlaying = false;
 
-        displayElements(gifs);
-        hideElements(pngs);
+function togglePlay(el, isPlaying) {
+    if (isPlaying) {
+        el.pause();
+        el.currentTime = 0;
     }
     else {
-        chaosAudio.pause();
-        chaosAudio.currentTime = 0;
+        el.play();
+    }
 
-        displayElements(pngs);
-        hideElements(gifs);
+    return !isPlaying;
+}
+
+tryChaosButton.onclick = function() {
+    toggleChaos();
+
+    if (cleanAudioPlaying) {
+        toggleCleanAudio();
     }
 }
 
-function displayElements(elements) {
-    [].forEach.call(elements, function(element) {
-        element.style.opacity = 1;
+function toggleChaos() {
+    [].forEach.call(gifs, function(gif) {
+        gif.classList.toggle('visible');
     });
-}
 
-function hideElements(elements) {
-    [].forEach.call(elements, function(element) {
-        element.style.opacity = 0;
-    });
+    chaosPlaying = togglePlay(chaosAudio, chaosPlaying);
 }
 
 // Clean guitar audio
 
 var cleanGuitarButton = document.getElementById('clean-guitar'),
-    cleanAudio = document.getElementById('clean-audio');
+    cleanAudio = cleanGuitarButton.getElementsByTagName('audio')[0],
+    cleanAudioPlaying = false;
 
 cleanGuitarButton.onclick = function() {
-    this.classList.toggle('playing');
-
-    // togglePlay(cleanAudio);
-
-    if (isPlaying(this)) {
-        cleanAudio.play();
+    if (chaosPlaying) {
+        toggleChaos();
     }
-    else {
-        cleanAudio.pause();
-        cleanAudio.currentTime = 0;
-    }
+
+    toggleCleanAudio();
 }
 
-function isPlaying(element) {
-    return element.classList == 'playing';
+function toggleCleanAudio() {
+    cleanAudioPlaying = togglePlay(cleanAudio, cleanAudioPlaying);
 }
 
-// function togglePlay(element) {
-//     if (isPlaying(element)) {
-//         element.play();
-//     }
-//     else {
-//         element.pause();
-//         element.currentTime = 0;
-//     }
-// }
+// About functionality
+
+var aboutButton = document.getElementById('open-about'),
+    aboutWindow = document.getElementById('about'),
+    closeButton = document.getElementById('close-button');
+
+aboutButton.onclick = function() {
+    aboutWindow.classList.toggle('visible');
+}
+
+closeButton.onclick = function() {
+    aboutWindow.classList.remove('visible');
+}
