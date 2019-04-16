@@ -1,5 +1,6 @@
 var wrapper = document.getElementById('pedals'),
-    pedals = wrapper.getElementsByTagName('div');
+    pedals = wrapper.getElementsByTagName('div'),
+    chaosAudio = document.getElementById('chaos-audio');
 
 for (i = 0; i < pedals.length; i++) {
     var pedal = pedals[i], audio;
@@ -35,12 +36,11 @@ soundButton.onclick = function() {
 // Ghost buttons audio
 
 var gifs = document.querySelectorAll('img[src$=".gif"]'),
-    pngs = document.querySelectorAll('img[src$=".png"');
+    pngs = document.querySelectorAll('img[src$=".png"]');
 
 // Chaos audio & animations
 
 var tryChaosButton = document.getElementById('try-chaos'),
-    chaosAudio = document.getElementById('chaos-audio'),
     chaosPlaying = false;
 
 function togglePlay(el, isPlaying) {
