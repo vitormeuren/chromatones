@@ -4,7 +4,7 @@
 
 <head> 
     <meta charset="utf-8">
-    <title>vitor meuren – chromatones</title>
+    <title>chromatones – vitor meuren</title>
     <meta name="description" content="Chromatones is an illustrated webpage designed and developed by Vitor Meuren – The project consists in a simple stompboxes (effect pedals) dashboard where the user is able to hover over each unit and play enabling its color and its correspondent sound.">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1"/>
     <link rel="stylesheet" type="text/css" href="assets/index.css">
@@ -80,18 +80,15 @@
             <section>
 
                 <div>
-                    <button type="ghost-button" id="clean-guitar">clean guitar</button>
-                    <audio id="clean-audio" src="binary/audio/clean_guitar.mp3"></audio>
+                    <button type="ghost-button" id="clean-guitar">clean guitar
+                        <audio src="binary/audio/clean_guitar.mp3"></audio>
+                    </button>
                 </div>
 
                 <div>
                     <button type="ghost-button" id="try-chaos">try chaos</button>
                     <audio id ="chaos-audio" src="binary/audio/try_chaos.mp3"></audio>
                 </div>
-
-            </section>
-
-            <section>
 
                 <div>
                     <button id="sound-enabled">
@@ -100,11 +97,15 @@
                     </button>
                 </div>
 
+            </section>
+
+            <section>
+
                 <div>
                     <button type="ghost-button" id="open-about">about</button>
                 </div>
                     
-                <div>
+                <div class="mini-about">
                     <p>
                         audio and visuals by <a href="http://vitormeuren.com" target="_blank">vitor meuren</a><br>
                         code by <a href="https://vitorcarvalho.net" target="_blank">vitor carvalho</a>

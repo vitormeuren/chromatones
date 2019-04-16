@@ -9,7 +9,6 @@
   padding: 0;
   border: 0;
   list-style: none;
-  font-size: 20px;
   color: #707070;
   font-weight: normal;
   text-decoration: none;
@@ -22,6 +21,7 @@
 /* GENERAL */
 
 body {
+  font-size: 18px;
   font-family: 'Anonymous Pro', sans-serif;
   line-height: 1.2;
 }
@@ -39,6 +39,10 @@ img {
   margin: 0 auto;
   max-width: 1280px;
   padding: 0 40px;
+}
+
+button {
+  background: none;
 }
 
 button:focus {
@@ -103,6 +107,7 @@ button {
   margin-bottom: 0;
   border: 2px solid #707070;
   display: none;
+  overflow: scroll;
 }
 
 #about div {
@@ -114,9 +119,6 @@ button {
 }
 
 #close-button {
-  width: 30px;
-  height: 30px;
-  /* background: black; */
   position: absolute;
   right: 50px;
   top: 50px;
@@ -161,9 +163,8 @@ a:hover {
   border: none;
 }
 
-footer button[type="ghost-button"] {
+button[type="ghost-button"] {
   display: block;
-  background: none;
   font-family: inherit;
   font-size: inherit;
   padding: 14px 18px;
@@ -173,7 +174,6 @@ footer button[type="ghost-button"] {
 #sound-enabled svg {
   fill: #707070;
   width: 50px;
-  vertical-align: top;
 }
 
 #sound-enabled:hover svg {
@@ -190,10 +190,77 @@ footer button[type="ghost-button"] {
 }
 
 
-/* layout responsivo - 2 colunas */
+@media screen and (max-width: 767px) {
 
-@media screen and (max-width: 768px) {
+  /* GENERAL */
+
+  body {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .wrapper {
+    padding: 0 20px;
+  }
+  
+  main {
+    margin-top: 20px;
+  }
+
   #pedals div {
-    width: calc(50% - 36px);
+    width: 50%;
+    margin: 0;
+  }
+
+  p {
+    line-height: 1.8;
+  }
+
+  /* ABOUT */
+
+  #about {
+    padding: 30px;
+    border-width: 1px;
+  }
+
+  #about div {
+    padding-right: 20px;
+  }
+
+  #close-button {
+    top: 20px;
+    right: 20px;
+  }
+
+  #close-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* FOOTER */
+
+  footer {
+    display: block;
+  }
+
+  footer section {
+    margin-bottom: 10px;
+  }
+
+  #sound-enabled svg {
+    width: 40px;
+  }
+
+  footer button {
+    margin: 0;
+  }
+
+  button[type="ghost-button"] {
+    border-width: 1px;
+    margin-right: 12px;
+  }
+
+  button[type="ghost-button"] {
+    padding: 12px 8px;
   }
 }

@@ -20,10 +20,6 @@ for (i = 0; i < pedals.length; i++) {
 
 // Sound-enabled button functionality
 
-function isPlaying(element) {
-    return element.classList == 'playing';
-}
-
 var soundButton = document.getElementById('sound-enabled');
 
 soundButton.onclick = function() {
@@ -38,44 +34,60 @@ soundButton.onclick = function() {
 
 // Ghost buttons audio
 
-var tryChaosButton = document.getElementById('try-chaos'),
-    chaosAudio = document.getElementById('chaos-audio'),
-    gifs = document.querySelectorAll('img[src$=".gif"]'),
+var gifs = document.querySelectorAll('img[src$=".gif"]'),
     pngs = document.querySelectorAll('img[src$=".png"');
 
-tryChaosButton.onclick = function() {
-    this.classList.toggle('playing');
+// Chaos audio & animations
 
+var tryChaosButton = document.getElementById('try-chaos'),
+    chaosAudio = document.getElementById('chaos-audio'),
+    chaosPlaying = false;
+
+function togglePlay(el, isPlaying) {
+    if (isPlaying) {
+        el.pause();
+        el.currentTime = 0;
+    }
+    else {
+        el.play();
+    }
+
+    return !isPlaying;
+}
+
+tryChaosButton.onclick = function() {
+    toggleChaos();
+
+    if (cleanAudioPlaying) {
+        toggleCleanAudio();
+    }
+}
+
+function toggleChaos() {
     [].forEach.call(gifs, function(gif) {
         gif.classList.toggle('visible');
     });
 
-    if (isPlaying(this)) {
-        chaosAudio.play();
-    }
-    else {
-        chaosAudio.pause();
-        chaosAudio.currentTime = 0;
-    }
+    chaosPlaying = togglePlay(chaosAudio, chaosPlaying);
 }
 
 // Clean guitar audio
 
 var cleanGuitarButton = document.getElementById('clean-guitar'),
-    cleanAudio = document.getElementById('clean-audio');
+    cleanAudio = cleanGuitarButton.getElementsByTagName('audio')[0],
+    cleanAudioPlaying = false;
 
 cleanGuitarButton.onclick = function() {
-    this.classList.toggle('playing');
+    if (chaosPlaying) {
+        toggleChaos();
+    }
 
-    if (isPlaying(this)) {
-        cleanAudio.play();
-    }
-    else {
-        cleanAudio.pause();
-        cleanAudio.currentTime = 0;
-    }
+    toggleCleanAudio();
 }
 
+function toggleCleanAudio() {
+    cleanAudioPlaying = togglePlay(cleanAudio, cleanAudioPlaying);
+}
 
 // About functionality
 
