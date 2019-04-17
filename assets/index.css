@@ -63,12 +63,12 @@ main {
   flex-wrap: wrap;
 }
 
-#pedals div, 
+#pedals > button, 
 button {
   cursor: pointer;
 }
 
-#pedals div {
+#pedals > button {
   width: calc(100%/3 - 24px);
   margin: 12px;
   position: relative;
@@ -208,7 +208,7 @@ button[type="ghost-button"] {
     margin-top: 20px;
   }
 
-  #pedals div {
+  #pedals > button {
     width: 50%;
     margin: 0;
   }
