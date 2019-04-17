@@ -1,5 +1,5 @@
 var wrapper = document.getElementById('pedals'),
-    pedals = wrapper.getElementsByTagName('div'),
+    pedals = wrapper.getElementsByTagName('button'),
     chaosAudio = document.getElementById('chaos-audio');
 
 for (i = 0; i < pedals.length; i++) {
