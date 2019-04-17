@@ -5,13 +5,13 @@ var wrapper = document.getElementById('pedals'),
 for (i = 0; i < pedals.length; i++) {
     var pedal = pedals[i], audio;
     
-    pedal.onmouseenter = function() {
+    pedal.onmouseover = function() {
         audio = this.getElementsByTagName('audio')[0];
 
         if (audio && chaosAudio.paused) audio.play();
     }
 
-    pedals[i].onmouseleave = function() {
+    pedal.onmouseout = function() {
         if (audio) {
             audio.pause();
             audio.currentTime = 0;
@@ -62,6 +62,15 @@ tryChaosButton.onclick = function() {
         toggleCleanAudio();
     }
 }
+
+chaosAudio.addEventListener('ended', function() {
+    chaosAudio.currentTime = 0;
+    tryChaosButton.innerHTML = 'try chaos';
+
+    [].forEach.call(gifs, function(gif) {
+        gif.classList.remove('visible');
+    });
+})
 
 function toggleChaos() {
     [].forEach.call(gifs, function(gif) {
