@@ -1,121 +1,146 @@
-var wrapper = document.getElementById('pedals'),
-    pedals = wrapper.getElementsByTagName('button'),
-    chaosAudio = document.getElementById('chaos-audio');
 
-for (i = 0; i < pedals.length; i++) {
-    var pedal = pedals[i], audio;
-    
-    pedal.onmouseover = function() {
-        audio = this.getElementsByTagName('audio')[0];
+$(window).on('load',function() {
+    var $chaosAudio = $('#chaos-audio'),
+        $pedals = $('#pedals div');
 
-        if (audio && chaosAudio.paused) audio.play();
-    }
+    $pedals.each(function() {
+        var $this = $(this),
+            $audio = $this.find('audio')[0];
 
-    pedal.onmouseout = function() {
-        if (audio) {
+        if (Modernizr.touchevents) {
+            $this.on('touchstart', function() {
+                $pedals.each(function() {
+                    var $this = $(this),
+                        $audio = $this.find('audio')[0];
+
+                    $this.removeClass('active');
+                    $audio.pause();
+                    $audio.currentTime = 0;
+                })
+
+                if ($audio) {
+                    if ($audio.paused && $chaosAudio[0].paused) {
+                        $audio.play();
+                    }
+                    else {
+                        $audio.pause();
+                        $audio.currentTime = 0;
+                    } 
+                }
+
+                $this.addClass('active');
+            })
+
+            $this.find('audio').on('ended', function() {
+                $this.removeClass('active');
+            })
+        }
+        else {
+            $this.on('mouseenter', function() {
+                $this.addClass('active');
+        
+                if (audio && $chaosAudio[0].paused) audio.play();
+            })
+        
+            $this.on('mouseleave', function() {
+                $this.removeClass('active');
+        
+                audio.pause();
+                audio.currentTime = 0;
+            })
+        }
+    })
+
+    // Sound-enabled button functionality
+
+    $('#sound-enabled').on('click', function() {
+        var $this = $(this),
+            $audios = $('audio');
+
+        $this.toggleClass('muted');
+
+        $audios.each(function() {
+            $(this)[0].volume = $this.hasClass('muted') ? 0 : 1; 
+        })
+    })
+
+
+    // Chaos audio & animations
+
+    var $gifs = $('img[src$=".gif"]'),
+        $tryChaosButton = $('#try-chaos'),
+        chaosPlaying = false;
+
+    function togglePlay(audio, isPlaying) {
+        if (isPlaying) {
             audio.pause();
             audio.currentTime = 0;
         }
-    }
-}
+        else {
+            audio.play();
+        }
 
-// Sound-enabled button functionality
-
-var soundButton = document.getElementById('sound-enabled');
-
-soundButton.onclick = function() {
-    var audios = document.getElementsByTagName('audio');
-
-    this.classList.toggle('muted');
-
-    for (i = 0; i < audios.length; i++) {
-        audios[i].volume = this.classList == 'muted' ? 0 : 1;
-    }
-}
-
-// Ghost buttons audio
-
-var gifs = document.querySelectorAll('img[src$=".gif"]'),
-    pngs = document.querySelectorAll('img[src$=".png"]');
-
-// Chaos audio & animations
-
-var tryChaosButton = document.getElementById('try-chaos'),
-    chaosPlaying = false;
-
-function togglePlay(el, isPlaying) {
-    if (isPlaying) {
-        el.pause();
-        el.currentTime = 0;
-    }
-    else {
-        el.play();
+        return !isPlaying;
     }
 
-    return !isPlaying;
-}
-
-tryChaosButton.onclick = function() {
-    toggleChaos();
-
-    if (cleanAudioPlaying) {
-        toggleCleanAudio();
-    }
-}
-
-chaosAudio.addEventListener('ended', function() {
-    chaosAudio.currentTime = 0;
-    tryChaosButton.innerHTML = 'try chaos';
-
-    [].forEach.call(gifs, function(gif) {
-        gif.classList.remove('visible');
-    });
-})
-
-function toggleChaos() {
-    [].forEach.call(gifs, function(gif) {
-        gif.classList.toggle('visible');
-    });
-
-    chaosPlaying = togglePlay(chaosAudio, chaosPlaying);
-    tryChaosButton.innerHTML = tryChaosButton.innerHTML == 'try chaos' ? 'stop chaos' : 'try chaos';
-}
-
-// Clean guitar audio
-
-var cleanGuitarButton = document.getElementById('clean-guitar'),
-    cleanAudio = document.getElementById('clean-guitar-audio'),
-    cleanAudioPlaying = false;
-
-cleanGuitarButton.onclick = function() {
-    if (chaosPlaying) {
+    $tryChaosButton.on('click', function() {
         toggleChaos();
+
+        if (cleanAudioPlaying) {
+            toggleCleanAudio();
+        }
+    })
+
+    $chaosAudio.on('ended', function() {
+        $chaosAudio.currentTime = 0;
+        $tryChaosButton.innerHTML = 'try chaos';
+
+        $gifs.each(function() {
+            $(this).removeClass('visible');
+        })
+    })
+
+    function toggleChaos() {
+        $gifs.each(function() {
+            $(this).toggleClass('visible');
+        })
+
+        chaosPlaying = togglePlay($chaosAudio[0], chaosPlaying);
+        $tryChaosButton.html($tryChaosButton[0].innerHTML == 'try chaos' ? 'stop chaos' : 'try chaos');
     }
 
-    toggleCleanAudio();
-}
+    // Clean guitar audio
 
-cleanAudio.addEventListener('ended', function() {
-    cleanAudio.currentTime = 0;
+    var $cleanGuitarButton = $('#clean-guitar'),
+        $cleanAudio = $('#clean-guitar-audio'),
+        cleanAudioPlaying = false;
 
-    cleanGuitarButton.innerHTML = 'clean guitar';
+    $cleanGuitarButton.on('click', function() {
+        if (chaosPlaying) toggleChaos();
+
+        toggleCleanAudio();
+    })
+
+    $cleanAudio.on('ended', function() {
+        $cleanAudio.currentTime = 0;
+
+        $cleanGuitarButton.html('clean guitar');
+    })
+
+    function toggleCleanAudio() {
+        cleanAudioPlaying = togglePlay($cleanAudio[0], cleanAudioPlaying);
+        $cleanGuitarButton.html($cleanGuitarButton[0].innerHTML == 'clean guitar' ? 'stop guitar' : 'clean guitar');
+    }
+
+    // About window functionality
+
+    var $aboutWindow = $('#about');
+
+    $('#open-about').on('click', function() {
+        $aboutWindow.toggleClass('visible');
+    })
+
+    $('#close-button').on('click', function() {
+        $aboutWindow.removeClass('visible');
+    })
 })
-
-function toggleCleanAudio() {
-    cleanAudioPlaying = togglePlay(cleanAudio, cleanAudioPlaying);
-    cleanGuitarButton.innerHTML = cleanGuitarButton.innerHTML == 'clean guitar' ? 'stop guitar' : 'clean guitar';
-}
-
-// About functionality
-
-var aboutButton = document.getElementById('open-about'),
-    aboutWindow = document.getElementById('about'),
-    closeButton = document.getElementById('close-button');
-
-aboutButton.onclick = function() {
-    aboutWindow.classList.toggle('visible');
-}
-
-closeButton.onclick = function() {
-    aboutWindow.classList.remove('visible');
-}
