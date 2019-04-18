@@ -63,12 +63,12 @@ main {
   flex-wrap: wrap;
 }
 
-#pedals > button, 
+#pedals div, 
 button {
   cursor: pointer;
 }
 
-#pedals > button {
+#pedals div {
   width: calc(100%/3 - 24px);
   margin: 12px;
   position: relative;
@@ -80,12 +80,30 @@ button {
   display: none;
 }
 
-#pedals img[src$=".gif"]:hover {
+/* #pedals img[src$=".gif"]:hover {
   display: block;
   cursor: pointer;
 }
 
 #pedals img[src$=".png"]:hover ~ img[src$=".gif"] {
+  display: block;
+}
+
+#pedals img[src$=".gif"].visible,
+#about.visible {
+  display: block;
+} */
+
+/* #pedals img[src$=".gif"]:hover {
+  display: block;
+  cursor: pointer;
+}
+
+#pedals img[src$=".png"].active ~ img[src$=".gif"] {
+  display: block;
+} */
+
+#pedals div.active img[src$=".gif"] {
   display: block;
 }
 
@@ -153,15 +171,10 @@ footer button {
   margin-right: 36px;
 }
 
-footer p:hover, 
-footer p:hover a, 
+footer p a:hover, 
 button[type="ghost-button"]:hover {
   color: #F73157;
   border-color: #F73157;
-}
-
-a:hover {
-  border: none;
 }
 
 button[type="ghost-button"] {
@@ -208,7 +221,7 @@ button[type="ghost-button"] {
     margin-top: 20px;
   }
 
-  #pedals > button {
+  #pedals div {
     width: 50%;
     margin: 0;
   }
