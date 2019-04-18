@@ -9,26 +9,23 @@ $(window).on('load',function() {
 
         if (Modernizr.touchevents) {
             $this.on('touchstart', function() {
-                $pedals.each(function() {
-                    var $this = $(this),
-                        $audio = $this.find('audio')[0];
+                if ($('.active').length) {
+                    var $activeAudio = $('.active').find('audio')[0];
 
-                    $this.removeClass('active');
-                    $audio.pause();
-                    $audio.currentTime = 0;
-                })
-
-                if ($audio) {
-                    if ($audio.paused && $chaosAudio[0].paused) {
-                        $audio.play();
-                    }
-                    else {
-                        $audio.pause();
-                        $audio.currentTime = 0;
-                    } 
+                    $activeAudio.pause();
+                    $activeAudio.currentTime = 0;
                 }
 
-                $this.addClass('active');
+                $this.toggleClass('active');
+                $pedals.not($this).removeClass();
+
+                if ($this.hasClass('active')) {
+                    $audio.play();
+                }
+                else {
+                    $audio.pause();
+                    $audio.currentTime = 0;
+                }
             })
 
             $this.find('audio').on('ended', function() {
@@ -82,6 +79,8 @@ $(window).on('load',function() {
 
         return !isPlaying;
     }
+
+    // TODO: stop any audio and animation before playing chaos/clean audios
 
     $tryChaosButton.on('click', function() {
         toggleChaos();
