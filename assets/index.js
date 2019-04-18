@@ -9,22 +9,27 @@ $(window).on('load',function() {
 
         if (Modernizr.touchevents) {
             $this.on('touchstart', function() {
-                if ($('.active').length) {
-                    var $activeAudio = $('.active').find('audio')[0];
+                if (!chaosPlaying && !cleanAudioPlaying) {
+                    if ($('.active').length) {
+                        var $activeAudio = $('.active').find('audio')[0];
 
-                    $activeAudio.pause();
-                    $activeAudio.currentTime = 0;
-                }
+                        $activeAudio.pause();
+                        $activeAudio.currentTime = 0;
+                    }
 
-                $this.toggleClass('active');
-                $pedals.not($this).removeClass();
+                    if (!chaosPlaying && !cleanAudioPlaying) {
+                        $this.toggleClass('active');
+                    }
 
-                if ($this.hasClass('active')) {
-                    $audio.play();
-                }
-                else {
-                    $audio.pause();
-                    $audio.currentTime = 0;
+                    $pedals.not($this).removeClass();
+
+                    if ($this.hasClass('active') && !chaosPlaying && !cleanAudioPlaying) {
+                        $audio.play();
+                    }
+                    else {
+                        $audio.pause();
+                        $audio.currentTime = 0;
+                    }
                 }
             })
 
@@ -80,8 +85,6 @@ $(window).on('load',function() {
         return !isPlaying;
     }
 
-    // TODO: stop any audio and animation before playing chaos/clean audios
-
     $tryChaosButton.on('click', function() {
         toggleChaos();
 
@@ -93,6 +96,7 @@ $(window).on('load',function() {
     $chaosAudio.on('ended', function() {
         $chaosAudio.currentTime = 0;
         $tryChaosButton.innerHTML = 'try chaos';
+        chaosPlaying = false;
 
         $gifs.each(function() {
             $(this).removeClass('visible');
@@ -100,9 +104,15 @@ $(window).on('load',function() {
     })
 
     function toggleChaos() {
-        $gifs.each(function() {
-            $(this).toggleClass('visible');
-        })
+        if ($('.active').length === 1) {
+            $audio = $('.active').find('audio')[0];
+
+            $audio.pause();
+            $audio.currentTime = 0;
+            $pedals.removeClass('active');
+        }
+
+        $pedals.toggleClass('active');
 
         chaosPlaying = togglePlay($chaosAudio[0], chaosPlaying);
         $tryChaosButton.html($tryChaosButton[0].innerHTML == 'try chaos' ? 'stop chaos' : 'try chaos');
@@ -122,6 +132,7 @@ $(window).on('load',function() {
 
     $cleanAudio.on('ended', function() {
         $cleanAudio.currentTime = 0;
+        cleanAudioPlaying = false;
 
         $cleanGuitarButton.html('clean guitar');
     })
