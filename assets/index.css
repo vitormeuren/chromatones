@@ -60,6 +60,8 @@ main {
   height: calc(100vh - 175px);
   flex-direction: column;
   flex-wrap: wrap;
+  max-height: 960px;
+  /* min-height: 800px; */
 }
 
 button {
