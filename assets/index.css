@@ -77,7 +77,7 @@ button {
   justify-content: center;
 }
 
-#pedals img[src$=".gif"] {
+#pedals .animation {
   position: absolute;
   top: 0; 
   display: none;
@@ -89,12 +89,12 @@ img {
   object-fit: contain;
 }
 
-#pedals div.active img[src$=".gif"] {
+#pedals div.active .animation {
   display: block;
   cursor: pointer;
 }
 
-#pedals img[src$=".gif"].visible,
+#pedals .animation.visible,
 #about.visible {
   display: block;
 }
@@ -211,7 +211,11 @@ button[type="ghost-button"] {
   #pedals div {
     max-width: none;
     height: calc(100%/3);
+    width: 50%;
     margin: 0;
+  }
+
+  #pedals div img {
     padding: 10px;
   }
 
