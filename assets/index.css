@@ -208,6 +208,10 @@ button[type="ghost-button"] {
     margin-top: 20px;
   }
 
+  #pedals {
+    height: 72vh;
+  }
+
   #pedals div {
     max-width: none;
     height: calc(100%/3);
