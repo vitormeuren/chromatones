@@ -1,5 +1,5 @@
 
-$(window).on('load',function() {
+$(function() {
     var $chaosAudio = $('#chaos-audio'),
         $pedals = $('#pedals div');
 
