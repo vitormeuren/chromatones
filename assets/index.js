@@ -39,16 +39,19 @@ $(window).on('load',function() {
         }
         else {
             $this.on('mouseenter', function() {
-                $this.addClass('active');
-        
-                if ($audio && $chaosAudio[0].paused) $audio.play();
+                if ($audio && $chaosAudio[0].paused) {
+                    $this.addClass('active');
+                    $audio.play();
+                }
             })
         
             $this.on('mouseleave', function() {
-                $this.removeClass('active');
-        
-                $audio.pause();
-                $audio.currentTime = 0;
+                if ($audio && $chaosAudio[0].paused) {
+                    $this.removeClass('active');
+            
+                    $audio.pause();
+                    $audio.currentTime = 0;
+                }
             })
         }
     })
