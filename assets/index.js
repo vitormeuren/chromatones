@@ -58,14 +58,14 @@ $(function() {
 
     // Sound-enabled button functionality
 
-    $('#sound-enabled').on('click, touchstart', function() {
+    $('#sound-enabled').on('click', function() {
         var $this = $(this),
             $audios = $('audio');
 
         $this.toggleClass('muted');
 
         $audios.each(function() {
-            $(this)[0].volume = $this.hasClass('muted') ? 0 : 1; 
+            $(this)[0].muted = $this.hasClass('muted'); 
         })
     })
 
