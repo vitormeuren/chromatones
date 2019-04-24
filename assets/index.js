@@ -58,7 +58,7 @@ $(function() {
 
     // Sound-enabled button functionality
 
-    $('#sound-enabled').on('click', function() {
+    $('#sound-enabled').on('click, touchstart', function() {
         var $this = $(this),
             $audios = $('audio');
 
